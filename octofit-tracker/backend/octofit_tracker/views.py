@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
 from .models import User, Team, Activity, Leaderboard, Workout
+from django.http import JsonResponse
 
 @api_view(['GET'])
 def api_root(request, format=None):
@@ -14,6 +15,9 @@ def api_root(request, format=None):
         'leaderboard': base_url + 'leaderboard/',
         'workouts': base_url + 'workouts/'
     })
+
+def api_root(request):
+    return JsonResponse({"message": "Welcome to the OctoFit Tracker API!", "endpoint": "https://glowing-space-memory-pjpx9j6jp5ww264vq-8000.githubpreview.dev"})
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
