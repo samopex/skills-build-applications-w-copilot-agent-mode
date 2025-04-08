@@ -9,7 +9,7 @@ from django.conf import settings
 # Ensure consistent API root endpoint with codespace suffix
 @api_view(['GET'])
 def api_root(request, format=None):
-    base_url = f"https://glowing-space-memory-pjpx9j6jp5ww264vq{settings.CODESPACE_API_SUFFIX}/api/"
+    base_url = f"https://glowing-space-memory-pjpx9j6jp5ww264vq-8000.app.github.dev/api/"
     return Response({
         'users': base_url + 'users/',
         'teams': base_url + 'teams/',
